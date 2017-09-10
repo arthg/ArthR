@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Nancy.Owin;
+using ArthR.Hubs;
 
 namespace ArthR
 {
@@ -26,6 +27,11 @@ namespace ArthR
             }
             
             app.UseOwin(x => x.UseNancy());
+            app.UseSignalR(routes =>
+            {
+                //TODO: what is "path" argument?
+                routes.MapHub<Broadcaster>("broadcaster");
+            });
         }
     }
 }
