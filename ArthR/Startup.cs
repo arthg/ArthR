@@ -13,6 +13,9 @@ namespace ArthR
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            // TODO: AddSockets prevents exception, but I DON'T GET IT
+            // "No service for type 'Microsoft.AspNetCore.Sockets.HttpConnectionDispatcher' has been registered."
+            services.AddSockets();
             services.AddSignalRCore();
         }
 
