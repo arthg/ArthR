@@ -28,12 +28,14 @@ namespace ArthR
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseFileServer();
             
             app.UseOwin(x => x.UseNancy());
             app.UseSignalR(routes =>
             {
                 //TODO: what is "path" argument?
-                routes.MapHub<Broadcaster>("broadcaster");
+                routes.MapHub<Broadcaster>("/broadcaster");
             });
         }
     }
